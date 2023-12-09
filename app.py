@@ -18,7 +18,31 @@ API_KEY = os.getenv('API_KEY')    # obtained from
 
 @app.route('/sms/receive', methods=['POST'])
 def receive_sms():
-    """get realtime sms from web hook"""
+    """get realtime sms from web hook
+       accept request body[example]:
+{
+  "results": [
+    {
+      "messageId": "817790313235066447",
+      "from": "385916242493",
+      "to": "385921004026",
+      "text": "QUIZ Correct answer is Paris",
+      "cleanText": "Correct answer is Paris",
+      "keyword": "QUIZ",
+      "receivedAt": "2016-10-06T09:28:39.220+0000",
+      "smsCount": 1,
+      "price": {
+        "pricePerMessage": 0,
+        "currency": "EUR"
+      },
+      "callbackData": "callbackData"
+    }
+  ],
+  "messageCount": 1,
+  "pendingMessageCount": 0
+}   
+    
+    """
 
     data = request.json
 
